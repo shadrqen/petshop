@@ -16,6 +16,11 @@ export default {
     ]
   },
 
+  server: {
+    port: process.env.NODE_ENV === 'production' ? 80 : 4200, // default: 3000
+    host: '0.0.0.0' // default: localhost
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
