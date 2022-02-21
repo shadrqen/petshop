@@ -5,10 +5,14 @@ module.exports = {
     node: true
   },
   extends: [
-    '@nuxtjs/eslint-config-typescript',
-    'plugin:nuxt/recommended'
+    'plugin:vue/essential',
+    'plugin:vue/strongly-recommended',
+    'plugin:vue/recommended',
+    'standard'
   ],
   plugins: [
+    'vue',
+    '@typescript-eslint'
   ],
   // add your custom rules here
   rules: {}
