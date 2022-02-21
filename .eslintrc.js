@@ -10,6 +10,11 @@ module.exports = {
     'plugin:vue/recommended',
     'standard'
   ],
+  parserOptions: {
+    ecmaVersion: 12,
+    parser: '@typescript-eslint/parser',
+    sourceType: 'module'
+  },
   plugins: [
     'vue',
     '@typescript-eslint'
