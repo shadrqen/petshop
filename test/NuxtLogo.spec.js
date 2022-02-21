@@ -1,12 +1,10 @@
-import { mount } from '@vue/test-utils'
-import NuxtLogo from '@/components/NuxtLogo.vue'
+// import { mount } from '@vue/test-utils'
 
 // eslint-disable-next-line no-undef
-describe('NuxtLogo', () => {
+describe('Test', () => {
   // eslint-disable-next-line no-undef
-  test('is a Vue instance', () => {
-    const wrapper = mount(NuxtLogo)
+  test('1+1 = 2', () => {
     // eslint-disable-next-line no-undef
-    expect(wrapper.vm).toBeTruthy()
+    expect(1 + 1).toBe(2)
   })
 })
