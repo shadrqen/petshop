@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <header>
-      Header
+      <BaseHeader />
     </header>
     <v-main>
       <router-view />
@@ -13,10 +13,12 @@
 </template>
 
 <script>
+import BaseHeader from '../components/Base/BaseHeader'
 import BaseFooter from '~/components/Base/BaseFooter'
 export default {
   name: 'DefaultLayout',
   components: {
+    BaseHeader,
     BaseFooter
   }
 }
