@@ -24,8 +24,9 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASS }}
-      - name: Build and Push to Docker Hub
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: shadrqen/petshop:latest
+#      To integrate this later
+#      - name: Build and Push to Docker Hub
+#        uses: docker/build-push-action@v2
+#        with:
+#          push: true
+#          tags: shadrqen/petshop:latest
