@@ -1,11 +1,15 @@
 <template>
-  <div>
-    Index page
-  </div>
+  <v-container>
+    <BaseSearch />
+  </v-container>
 </template>
 
 <script>
+import BaseSearch from '../components/Base/BaseSearch'
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  components: {
+    BaseSearch
+  }
 }
 </script>
