@@ -28,4 +28,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ secrets.ES_CLIENT }}:latest
+          tags: shadrqen/petshop:latest
