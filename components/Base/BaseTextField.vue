@@ -6,10 +6,13 @@
     :label="textLabel"
     :outlined="outlined"
     :rules="textRule"
+    :prepend-icon="prependIcon"
+    :single-line="singleLine"
+    :hide-details="hideDetails"
+    :solo="solo"
     @input="$emit('input', $event.target.value)"
   />
 </template>
-
 <script>
 export default {
   name: 'BaseTextField',
@@ -37,6 +40,26 @@ export default {
       type: String,
       required: false,
       default: ''
+    },
+    prependIcon: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    singleLine: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    hideDetails: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    solo: {
+      type: Boolean,
+      required: false,
+      default: false
     },
     textRule: {
       type: Function,
