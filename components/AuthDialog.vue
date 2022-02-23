@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import BaseDialog from '~/BaseDialog'
+import BaseDialog from '@/components/Base/BaseDialog'
 import BaseButton from '@/components/Base/BaseButton'
 export default {
   name: 'AuthDialog',
