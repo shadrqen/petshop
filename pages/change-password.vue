@@ -1,15 +1,22 @@
 <template>
   <base-password-recovery
-    action-content="Get Recovery Link"
+    action-content="Change Password"
     :recovery-sub-title="recoverySubTitle"
-    recovery-title="Recover password"
+    recovery-title="Change password"
   >
     <template #text-fields>
+      <v-text-field
+        id="password"
+        class="mt-6"
+        data-test-id="user-email-field"
+        label="New password"
+        outlined
+      />
       <v-text-field
         id="email"
         class="mt-6"
         data-test-id="user-email-field"
-        label="Email Address *"
+        label="Re-enter your new password"
         outlined
       />
     </template>
@@ -19,14 +26,13 @@
 <script>
 import BasePasswordRecovery from '@/components/Base/BasePasswordRecovery'
 export default {
-  name: 'PasswordRecovery',
+  name: 'ChangePassword',
   components: {
     BasePasswordRecovery
   },
   data () {
     return {
-      recoverySubTitle: 'Enter email associated with your account and we\'ll send an email with instructions\n' +
-        ' to reset your password.'
+      recoverySubTitle: 'Your new password must be different from previous passwords'
     }
   }
 }
