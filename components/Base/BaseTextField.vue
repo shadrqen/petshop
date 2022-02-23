@@ -62,9 +62,9 @@ export default {
       default: false
     },
     textRule: {
-      type: Function,
+      type: Array,
       required: false,
-      default: () => {}
+      default: () => []
     }
   }
 }
