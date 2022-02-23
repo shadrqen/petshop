@@ -15,5 +15,6 @@ export const auth: Module<AuthState, RootState> = {
   state,
   getters,
   actions,
-  mutations
+  mutations,
+  namespaced: true
 }
