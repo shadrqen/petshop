@@ -1,6 +1,6 @@
 {
   "name": "@shadrqengisa/petshop",
-  "version": "0.15.6",
+  "version": "0.16.0",
   "private": false,
   "scripts": {
     "dev": "nuxt",

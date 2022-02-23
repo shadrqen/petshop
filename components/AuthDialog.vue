@@ -1,8 +1,8 @@
 <template>
   <base-dialog
+    :dialog="dialog"
     :close-dialog="closeDialog"
     :max-width="420"
-    :dialog="dialog"
   >
     <template #title>
       <v-avatar>
@@ -26,6 +26,10 @@
           required
         />
         <base-button
+          width="100%"
+          color="white"
+          class="white--text"
+          :background-color="btnBackgroundColor"
           :data-test-id="dataTestId"
           :btn-id="actionBtnId"
           :btn-class="actionBtnClass"
@@ -117,6 +121,11 @@ export default {
     error: {
       type: Object,
       required: true
+    }
+  },
+  data () {
+    return {
+      btnBackgroundColor: '#50c494'
     }
   }
 }

@@ -7,7 +7,7 @@
     :text="text"
     :class="btnClass"
     :style="btnStyles"
-    @click.prevent="submitContent"
+    @click.prevent="$emit('submitContent')"
   >
     <slot name="button-body" />
   </v-btn>
@@ -45,11 +45,6 @@ export default {
       type: Boolean,
       required: false,
       default: false
-    },
-    submitContent: {
-      type: Function,
-      required: false,
-      default: () => {}
     },
     width: {
       type: String,
