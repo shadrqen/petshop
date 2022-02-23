@@ -1,5 +1,5 @@
 import Vuex, { StoreOptions } from 'vuex'
-import { auth } from './user'
+import { auth } from './auth'
 import { RootState } from '~/types/vuex'
 
 const store: StoreOptions<RootState> = {
