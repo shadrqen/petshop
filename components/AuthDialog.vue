@@ -2,7 +2,6 @@
   <base-dialog
     :close-dialog="closeDialog"
     :max-width="420"
-    :dialog="dialog"
   >
     <template #title>
       <v-avatar>
@@ -69,10 +68,6 @@ export default {
   props: {
     closeDialog: {
       type: Function,
-      required: true
-    },
-    dialog: {
-      type: Boolean,
       required: true
     },
     submitContent: {
