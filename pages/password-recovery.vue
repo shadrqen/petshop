@@ -5,12 +5,12 @@
     recovery-title="Recover password"
   >
     <template #text-fields>
-      <v-text-field
-        id="email"
-        class="mt-6"
-        data-test-id="user-email-field"
-        label="Email Address *"
-        outlined
+      <base-text-field
+        text-label="Email Address *"
+        text-id="email-address"
+        text-data-test-id="email-address-field"
+        text-class="mt-6"
+        :outlined="true"
       />
     </template>
   </base-password-recovery>
@@ -18,10 +18,12 @@
 
 <script>
 import BasePasswordRecovery from '@/components/Base/BasePasswordRecovery'
+import BaseTextField from '@/components/Base/BaseTextField'
 export default {
   name: 'PasswordRecovery',
   components: {
-    BasePasswordRecovery
+    BasePasswordRecovery,
+    BaseTextField
   },
   data () {
     return {

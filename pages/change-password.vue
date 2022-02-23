@@ -5,19 +5,19 @@
     recovery-title="Change password"
   >
     <template #text-fields>
-      <v-text-field
-        id="password"
-        class="mt-6"
-        data-test-id="user-email-field"
-        label="New password"
-        outlined
+      <base-text-field
+        text-label="New password"
+        text-id="password"
+        text-data-test-id="change-password-field"
+        text-class="mt-6"
+        :outlined="true"
       />
-      <v-text-field
-        id="email"
-        class="mt-6"
-        data-test-id="user-email-field"
-        label="Re-enter your new password"
-        outlined
+      <base-text-field
+        text-label="Re-enter your new password"
+        text-id="re-enter-password"
+        text-data-test-id="change-password-confirm-field"
+        text-class="mt-6"
+        :outlined="true"
       />
     </template>
   </base-password-recovery>
@@ -25,10 +25,12 @@
 
 <script>
 import BasePasswordRecovery from '@/components/Base/BasePasswordRecovery'
+import BaseTextField from '@/components/Base/BaseTextField'
 export default {
   name: 'ChangePassword',
   components: {
-    BasePasswordRecovery
+    BasePasswordRecovery,
+    BaseTextField
   },
   data () {
     return {

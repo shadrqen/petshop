@@ -1,17 +1,21 @@
 <template>
-  <v-text-field
+  <base-text-field
     v-model="search"
+    text-label="Search products"
     prepend-icon="mdi-magnify"
-    label="Search products"
-    single-line
-    hide-details
-    solo
+    :solo="true"
+    :single-line="true"
+    :hide-details="true"
   />
 </template>
 
 <script>
+import BaseTextField from '@/components/Base/BaseTextField'
 export default {
   name: 'SearchBar',
+  components: {
+    BaseTextField
+  },
   data () {
     return {
       search: ''
@@ -21,5 +25,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
