@@ -6,6 +6,7 @@
     :outlined="outlined"
     :text="text"
     :class="btnClass"
+    :style="btnStyles"
     @click.prevent="submitContent"
   >
     <slot name="button-body" />
@@ -49,10 +50,41 @@ export default {
       type: Function,
       required: false,
       default: () => {}
+    },
+    width: {
+      type: String,
+      required: false,
+      default: 'auto'
+    },
+    color: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    backgroundColor: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    textTransform: {
+      type: String,
+      required: false,
+      default: ''
+    }
+  },
+  computed: {
+    btnStyles () {
+      return {
+        width: this.width,
+        color: this.width,
+        'background-color': this.backgroundColor,
+        'text-transform': this.textTransform
+      }
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+
 </style>
