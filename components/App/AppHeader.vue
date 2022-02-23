@@ -3,7 +3,10 @@
     :color="headerColor"
     class="elevation-0"
   >
-    <v-toolbar-title class="white--text">
+    <router-link
+      to="/"
+      class="text-decoration-none white--text"
+    >
       <v-avatar
         size="25"
       >
@@ -13,40 +16,51 @@
         >
       </v-avatar>
       petson
-    </v-toolbar-title>
+    </router-link>
     <v-spacer />
-    <v-btn
-      text
-      class="white--text"
+    <base-button
+      :text="true"
+      btn-class="white--text"
     >
-      Products
-      <v-icon>mdi-chevron-down</v-icon>
-    </v-btn>
-    <v-btn
-      text
-      class="white--text"
+      <template #button-body>
+        Products
+        <v-icon>mdi-chevron-down</v-icon>
+      </template>
+    </base-button>
+    <base-button
+      :text="true"
+      btn-class="white--text"
     >
-      Promotions
-    </v-btn>
+      <template #button-body>
+        Promotions
+      </template>
+    </base-button>
     <v-spacer />
-    <v-btn
-      class="white--text mx-1"
-      outlined
+    <base-button
+      :outlined="true"
+      btn-class="white--text"
     >
-      Cart ({{ cartItemsCount }})
-    </v-btn>
+      <template #button-body>
+        Cart ({{ cartItemsCount }})
+      </template>
+    </base-button>
     <client-only>
-      <v-btn
-        class="white--text mx-1"
-        outlined
-        v-text="'Logout'"
-      />
-      <v-btn
-        class="white--text mx-1"
-        outlined
-        v-text="'Login'"
-      />
-
+      <base-button
+        btn-class="white--text mx-1"
+        :outlined="true"
+      >
+        <template #button-body>
+          Logout
+        </template>
+      </base-button>
+      <base-button
+        btn-class="white--text mx-1"
+        :outlined="true"
+      >
+        <template #button-body>
+          Login
+        </template>
+      </base-button>
       <v-avatar
         class="mx-2"
         size="35"
@@ -61,8 +75,12 @@
 </template>
 
 <script>
+import BaseButton from '@/components/Base/BaseButton'
 export default {
   name: 'BaseHeader',
+  components: {
+    BaseButton
+  },
   data () {
     return {
       cartItemsCount: 0,
