@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import BaseSearch from '../components/Base/BaseSearch'
+import BaseSearch from '../components/SearchBar'
 export default {
   name: 'IndexPage',
   components: {

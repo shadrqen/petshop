@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'BaseSearch',
+  name: 'SearchBar',
   data () {
     return {
       search: ''
