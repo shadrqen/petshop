@@ -11,7 +11,12 @@
         <v-card-text>
           {{ recoverySubTitle }}
           <slot name="text-fields" />
-          <base-button>
+          <base-button
+            width="100%"
+            color="white"
+            class="white--text"
+            :background-color="btnBackgroundColor"
+          >
             <template #button-body>
               {{ actionContent }}
             </template>
@@ -55,7 +60,8 @@ export default {
         'offset-md': 3,
         sm: 8,
         'offset-sm': 2
-      }
+      },
+      btnBackgroundColor: '#50c494'
     }
   }
 }
