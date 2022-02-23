@@ -1,39 +1,27 @@
 <template>
-  <v-row>
-    <v-col v-bind="attrs">
-      <v-card
-        flat
-      >
-        <v-card-title class="justify-center mt-5">
-          Recover password
-        </v-card-title>
-        <v-card-text>
-          Enter email associated with your account and we'll send an email with instructions
-          to reset your password.
-          <v-text-field
-            id="email"
-            class="mt-6"
-            data-test-id="user-email-field"
-            label="Email Address *"
-            outlined
-          />
-          <base-button>
-            <template #button-body>
-              Get Recovery Link
-            </template>
-          </base-button>
-        </v-card-text>
-      </v-card>
-    </v-col>
-  </v-row>
+  <base-password-recovery
+    action-content="Get Recovery Link"
+    :recovery-sub-title="recoverySubTitle"
+    recovery-title="Recover password"
+  >
+    <template #text-fields>
+      <v-text-field
+        id="email"
+        class="mt-6"
+        data-test-id="user-email-field"
+        label="Email Address *"
+        outlined
+      />
+    </template>
+  </base-password-recovery>
 </template>
 
 <script>
-import BaseButton from '@/components/Base/BaseButton'
+import BasePasswordRecovery from '@/components/Base/BasePasswordRecovery'
 export default {
   name: 'PasswordRecovery',
   components: {
-    BaseButton
+    BasePasswordRecovery
   },
   data () {
     return {
@@ -47,7 +35,9 @@ export default {
         'offset-md': 3,
         sm: 8,
         'offset-sm': 2
-      }
+      },
+      recoverySubTitle: 'Enter email associated with your account and we\'ll send an email with instructions\n' +
+        ' to reset your password.'
     }
   }
 }
