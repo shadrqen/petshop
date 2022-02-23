@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import BaseHeader from '../components/Base/BaseHeader'
-import BaseFooter from '~/components/Base/BaseFooter'
+import BaseHeader from '../components/App/AppHeader'
+import BaseFooter from '@/components/App/AppFooter'
 export default {
   name: 'DefaultLayout',
   components: {
