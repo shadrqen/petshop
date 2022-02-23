@@ -37,6 +37,7 @@
         </template>
       </base-button>
       <v-spacer />
+      {{ loginDialog }}
       <base-button
         :outlined="true"
         btn-class="white--text"
@@ -46,43 +47,47 @@
         </template>
       </base-button>
       <client-only>
-        <base-button
-          btn-class="white--text mx-1"
-          :outlined="true"
-        >
-          <template #button-body>
-            Logout
-          </template>
-        </base-button>
-        <base-button
-          btn-class="white--text mx-1"
-          :outlined="true"
-          :submit-content="openLoginDialog(true)"
-        >
-          <template #button-body>
-            Login
-          </template>
-        </base-button>
-        <v-avatar
-          class="mx-2"
-          size="35"
-        >
-          <img
-            :src="require('@/assets/profile.jpg')"
-            alt="User Profile"
+        <template v-if="userLoggedIn">
+          <base-button
+            btn-class="white--text mx-1"
+            :outlined="true"
+            @submitContent="openCloseLoginDialog(false)"
           >
-        </v-avatar>
+            <template #button-body>
+              Logout
+            </template>
+          </base-button>
+          <v-avatar
+            class="mx-2"
+            size="35"
+          >
+            <img
+              :src="require('@/assets/profile.jpg')"
+              alt="User Profile"
+            >
+          </v-avatar>
+        </template>
+        <template v-else>
+          <base-button
+            btn-class="white--text mx-1"
+            :outlined="true"
+            @submitContent="openCloseLoginDialog(true)"
+          >
+            <template #button-body>
+              Login
+            </template>
+          </base-button>
+        </template>
       </client-only>
     </v-toolbar>
-    <login-dialog v-model="loginDialog" />
+    <login-dialog :dialog="loginDialog" />
   </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 import BaseButton from '@/components/Base/BaseButton'
 import LoginDialog from '@/components/LoginDialog'
-import { AuthMutations } from '@/store/user/mutations'
 
 export default {
   name: 'BaseHeader',
@@ -93,12 +98,17 @@ export default {
   data () {
     return {
       cartItemsCount: 0,
-      headerColor: '#50c494',
-      loginDialog: false
+      headerColor: '#50c494'
     }
   },
+  computed: {
+    ...mapState('auth', ['userLoggedIn', 'loginDialog'])
+  },
   methods: {
-    ...mapMutations({ openLoginDialog: AuthMutations.SET_USER_IS_LOGGED_IN })
+    ...mapMutations('auth', ['SET_LOGIN_DIALOG']),
+    openCloseLoginDialog (value) {
+      this.SET_LOGIN_DIALOG(value)
+    }
   }
 }
 </script>

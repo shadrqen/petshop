@@ -1,5 +1,6 @@
 <template>
   <v-dialog
+    :value="dialog"
     :fullscreen="screenIsXL"
     eager
     :max-width="maxWidth"
@@ -38,6 +39,10 @@ export default {
   props: {
     closeDialog: {
       type: Function,
+      required: true
+    },
+    dialog: {
+      type: Boolean,
       required: true
     },
     maxWidth: {

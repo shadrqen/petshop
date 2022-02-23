@@ -6,6 +6,7 @@
     form-ref="loginForm"
     data-test-id="login-button"
     :submit-content="() => {}"
+    :dialog="loginDialog"
     :close-dialog="() => {}"
     :error="loginError"
     checkbox-label="Remember me"
@@ -51,6 +52,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import AuthDialog from '@/components/AuthDialog'
 
 export default {
@@ -72,6 +74,9 @@ export default {
       },
       actionBtnClass: 'text-decoration-none mb-3 body-2'
     }
+  },
+  computed: {
+    ...mapState('auth', ['loginDialog'])
   }
 }
 </script>
