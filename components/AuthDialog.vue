@@ -29,6 +29,7 @@
           :data-test-id="dataTestId"
           :btn-id="actionBtnId"
           :btn-class="actionBtnClass"
+          :action-ongoing="submissionOngoing"
           :submit-content="submitContent"
         >
           <template #button-body>
