@@ -27,7 +27,8 @@ export default {
     },
     dataTestId: {
       type: String,
-      required: true
+      required: false,
+      default: ''
     },
     actionOngoing: {
       type: Boolean,
