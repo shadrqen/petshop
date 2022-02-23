@@ -10,7 +10,7 @@
     :single-line="singleLine"
     :hide-details="hideDetails"
     :solo="solo"
-    @input="$emit('input', $event.target.value)"
+    @input="$emit('input', $event)"
   />
 </template>
 <script>
