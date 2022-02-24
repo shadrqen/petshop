@@ -81,6 +81,7 @@
     </v-toolbar>
     <login-dialog />
     <registration-dialog />
+    <user-setting />
   </div>
 </template>
 
@@ -89,6 +90,7 @@ import { mapState } from 'vuex'
 import BaseButton from '@/components/Base/BaseButton'
 import LoginDialog from '@/components/LoginDialog'
 import RegistrationDialog from '@/components/RegistrationDialog'
+import UserSetting from '@/components/UserSetting'
 import AuthenticationMixin from '@/mixins/AuthenticationMixin'
 
 export default {
@@ -96,7 +98,8 @@ export default {
   components: {
     BaseButton,
     LoginDialog,
-    RegistrationDialog
+    RegistrationDialog,
+    UserSetting
   },
   mixins: [AuthenticationMixin],
   data () {
