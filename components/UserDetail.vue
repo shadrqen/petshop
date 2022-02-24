@@ -6,14 +6,11 @@
       cols="12"
       sm="3"
     >
-      <v-avatar
-        size="100"
-      >
-        <img
-          :src="require('@/assets/profile.jpg')"
-          alt="Profile"
-        >
-      </v-avatar>
+      <base-avatar
+        image-alt="Profile"
+        image-src="profile.jpg"
+        :avatar-size="100"
+      />
     </v-col>
     <v-col>
       <v-divider vertical />
@@ -45,8 +42,12 @@
 </template>
 
 <script>
+import BaseAvatar from '@/components/Base/BaseAvatar'
 export default {
   name: 'UserDetails',
+  components: {
+    BaseAvatar
+  },
   data () {
     return {
       userDetails: [

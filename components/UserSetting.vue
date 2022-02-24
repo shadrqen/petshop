@@ -1,7 +1,7 @@
 <template>
   <base-dialog
     :max-width="800"
-    :dialog="true"
+    :dialog="settingsDialog"
   >
     <template #title>
       <div class="headline mt-n5">
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import BaseDialog from '@/components/Base/BaseDialog'
 import LatestOrder from '@/components/LatestOrder'
 import UserDetail from '@/components/UserDetail'
@@ -25,6 +26,9 @@ export default {
     BaseDialog,
     LatestOrder,
     UserDetail
+  },
+  computed: {
+    ...mapState('user', ['settingsDialog'])
   }
 }
 </script>
