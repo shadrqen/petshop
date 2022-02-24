@@ -6,6 +6,7 @@
     :label="textLabel"
     :outlined="outlined"
     :rules="textRule"
+    :append-icon="appendIcon"
     :prepend-icon="prependIcon"
     :single-line="singleLine"
     :hide-details="hideDetails"
@@ -43,6 +44,11 @@ export default {
       default: 'text'
     },
     textDataTestId: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    appendIcon: {
       type: String,
       required: false,
       default: ''
