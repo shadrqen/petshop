@@ -1,8 +1,8 @@
 <template>
   <base-dialog
     :dialog="dialog"
-    :close-dialog="closeDialog"
     :max-width="420"
+    @closeDialog="$emit('closeDialog')"
   >
     <template #title>
       <v-avatar>
@@ -71,10 +71,6 @@ export default {
     BaseButton
   },
   props: {
-    closeDialog: {
-      type: Function,
-      required: true
-    },
     dialog: {
       type: Boolean,
       required: true

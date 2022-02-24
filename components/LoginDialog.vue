@@ -7,10 +7,10 @@
     data-test-id="login-button"
     :submit-content="() => {}"
     :dialog="loginDialog"
-    :close-dialog="() => {}"
     :error="loginError"
     checkbox-label="Remember me"
     checkbox-data-test-id="remember-me-checkbox"
+    @closeDialog="openCloseDialogs('login')"
   >
     <template #text-fields>
       <v-text-field
@@ -43,7 +43,7 @@
       <v-spacer />
       <a
         :class="actionBtnClass + ' mr-2'"
-        @click="openCloseRegistrationDialog(true)"
+        @click="openCloseDialogs('registration', 'open')"
       >
         Don't have an account? Sign Up
       </a>
@@ -54,12 +54,14 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import AuthDialog from '@/components/AuthDialog'
+import AuthenticationMixin from '@/mixins/AuthenticationMixin'
 
 export default {
   name: 'BaseLogin',
   components: {
     AuthDialog
   },
+  mixins: [AuthenticationMixin],
   data () {
     return {
       loginOngoing: false,
@@ -81,7 +83,6 @@ export default {
   methods: {
     ...mapMutations('auth', ['SET_REGISTRATION_DIALOG', 'SET_LOGIN_DIALOG']),
     openCloseRegistrationDialog (value) {
-      console.log('open registration dialog')
       if (this.loginDialog && !this.registrationDialog) {
         this.SET_LOGIN_DIALOG(false)
       }

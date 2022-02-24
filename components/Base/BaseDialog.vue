@@ -15,7 +15,7 @@
         <v-toolbar-items>
           <v-btn
             icon
-            @click="closeDialog"
+            @click="$emit('closeDialog')"
           >
             <v-icon>mdi-close</v-icon>
           </v-btn>
@@ -37,10 +37,6 @@
 export default {
   name: 'BaseDialog',
   props: {
-    closeDialog: {
-      type: Function,
-      required: true
-    },
     dialog: {
       type: Boolean,
       required: true

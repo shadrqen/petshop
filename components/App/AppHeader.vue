@@ -70,7 +70,7 @@
           <base-button
             btn-class="white--text mx-1"
             :outlined="true"
-            @submitContent="openCloseLoginDialog(true)"
+            @submitContent="openCloseDialogs('login', 'open')"
           >
             <template #button-body>
               Login
@@ -85,10 +85,11 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex'
+import { mapState } from 'vuex'
 import BaseButton from '@/components/Base/BaseButton'
 import LoginDialog from '@/components/LoginDialog'
 import RegistrationDialog from '@/components/RegistrationDialog'
+import AuthenticationMixin from '@/mixins/AuthenticationMixin'
 
 export default {
   name: 'BaseHeader',
@@ -97,6 +98,7 @@ export default {
     LoginDialog,
     RegistrationDialog
   },
+  mixins: [AuthenticationMixin],
   data () {
     return {
       cartItemsCount: 0,
@@ -105,12 +107,6 @@ export default {
   },
   computed: {
     ...mapState('auth', ['userLoggedIn'])
-  },
-  methods: {
-    ...mapMutations('auth', ['SET_LOGIN_DIALOG']),
-    openCloseLoginDialog (value) {
-      this.SET_LOGIN_DIALOG(value)
-    }
   }
 }
 </script>
