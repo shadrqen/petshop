@@ -5,12 +5,11 @@
     @closeDialog="$emit('closeDialog')"
   >
     <template #title>
-      <v-avatar>
-        <img
-          :src="require('@/assets/logo.PNG')"
-          alt="Logo"
-        >
-      </v-avatar>
+      <base-avatar
+        image-alt="Logo"
+        image-src="logo.PNG"
+        avatar-class="mx-2"
+      />
     </template>
     <template #content>
       <v-form
@@ -64,9 +63,11 @@
 <script>
 import BaseDialog from '@/components/Base/BaseDialog'
 import BaseButton from '@/components/Base/BaseButton'
+import BaseAvatar from '@/components/Base/BaseAvatar'
 export default {
   name: 'AuthDialog',
   components: {
+    BaseAvatar,
     BaseDialog,
     BaseButton
   },

@@ -8,15 +8,12 @@
         to="/"
         class="text-decoration-none white--text"
       >
-        <v-avatar
-          size="25"
-        >
-          <img
-            :src="require('@/assets/headerIcon.PNG')"
-            alt="Logo"
-          >
-        </v-avatar>
-        petson
+        <base-avatar
+          image-alt="Logo"
+          image-src="headerIcon.PNG"
+          :avatar-size="25"
+        />
+        petson.
       </router-link>
       <v-spacer />
       <base-button
@@ -56,15 +53,12 @@
               Logout
             </template>
           </base-button>
-          <v-avatar
-            class="mx-2"
-            size="35"
-          >
-            <img
-              :src="require('@/assets/profile.jpg')"
-              alt="User Profile"
-            >
-          </v-avatar>
+          <base-avatar
+            image-alt="Profile"
+            image-src="profile.jpg"
+            :avatar-size="35"
+            avatar-class="mx-2"
+          />
         </template>
         <template v-else>
           <base-button
@@ -88,6 +82,7 @@
 <script>
 import { mapState } from 'vuex'
 import BaseButton from '@/components/Base/BaseButton'
+import BaseAvatar from '@/components/Base/BaseAvatar'
 import LoginDialog from '@/components/LoginDialog'
 import RegistrationDialog from '@/components/RegistrationDialog'
 import UserSetting from '@/components/UserSetting'
@@ -96,6 +91,7 @@ import AuthenticationMixin from '@/mixins/AuthenticationMixin'
 export default {
   name: 'BaseHeader',
   components: {
+    BaseAvatar,
     BaseButton,
     LoginDialog,
     RegistrationDialog,
