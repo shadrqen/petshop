@@ -7,6 +7,10 @@
     :text="text"
     :class="btnClass"
     :style="btnStyles"
+    :x-small="xSmall"
+    :small="small"
+    :large="large"
+    :x-large="xLarge"
     @click.prevent="$emit('submitContent')"
   >
     <slot name="button-body" />
@@ -37,6 +41,26 @@ export default {
       default: false
     },
     outlined: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    small: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    xSmall: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    large: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    xLarge: {
       type: Boolean,
       required: false,
       default: false
