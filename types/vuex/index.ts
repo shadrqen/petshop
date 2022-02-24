@@ -5,6 +5,10 @@ export interface AuthState {
   accessToken: string
 }
 
+export interface UserState {
+  settingsDialog: boolean
+}
+
 export interface RootState {
 
 }

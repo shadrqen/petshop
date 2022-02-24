@@ -1,5 +1,6 @@
 import Vuex, { StoreOptions } from 'vuex'
 import { auth } from './auth'
+import { user } from './user'
 import { RootState } from '~/types/vuex'
 
 const store: StoreOptions<RootState> = {
@@ -8,7 +9,8 @@ const store: StoreOptions<RootState> = {
   mutations: {},
   getters: {},
   modules: {
-    auth
+    auth,
+    user
   }
 }
 
