@@ -36,7 +36,7 @@
     <template #action-buttons>
       <a
         :class="actionBtnClass + ' ml-2'"
-        @click="() => {}"
+        @click="openResetPasswordPage"
       >
         Forgot password?
       </a>
@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState } from 'vuex'
 import AuthDialog from '@/components/AuthDialog'
 import AuthenticationMixin from '@/mixins/AuthenticationMixin'
 
@@ -78,15 +78,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('auth', ['loginDialog', 'registrationDialog'])
+    ...mapState('auth', ['loginDialog'])
   },
   methods: {
-    ...mapMutations('auth', ['SET_REGISTRATION_DIALOG', 'SET_LOGIN_DIALOG']),
-    openCloseRegistrationDialog (value) {
-      if (this.loginDialog && !this.registrationDialog) {
-        this.SET_LOGIN_DIALOG(false)
-      }
-      this.SET_REGISTRATION_DIALOG(value)
+    openResetPasswordPage () {
+      this.openCloseDialogs('login')
+      this.$router.push('/password-recovery')
     }
   }
 }
