@@ -8,9 +8,9 @@
     :submit-content="register"
     :dialog="registrationDialog"
     :error="registrationError"
-    :close-dialog="() => {}"
     checkbox-data-test-id="promotional-marketing-checkbox"
     checkbox-label="I want to receive inspiration, marketing promotions and updates via email"
+    @closeDialog="openCloseDialogs('registration')"
   >
     <template #text-fields>
       <v-row no-gutters>
@@ -79,6 +79,7 @@
 import { mapState } from 'vuex'
 import AuthDialog from '@/components/AuthDialog'
 import BaseTextField from '@/components/Base/BaseTextField'
+import AuthenticationMixin from '@/mixins/AuthenticationMixin'
 
 export default {
   name: 'RegistrationDialog',
@@ -86,6 +87,7 @@ export default {
     AuthDialog,
     BaseTextField
   },
+  mixins: [AuthenticationMixin],
   data () {
     return {
       registrationOngoing: false,
