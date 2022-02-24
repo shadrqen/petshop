@@ -68,7 +68,10 @@
       />
     </template>
     <template #action-buttons>
-      <a :class="actionBtnClass">
+      <a
+        :class="actionBtnClass"
+        @click="openCloseDialogs('login', 'open')"
+      >
         Already have an account? Log in
       </a>
     </template>
