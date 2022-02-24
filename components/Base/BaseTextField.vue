@@ -10,6 +10,7 @@
     :single-line="singleLine"
     :hide-details="hideDetails"
     :solo="solo"
+    :type="textType"
     @input="$emit('input', $event)"
   />
 </template>
@@ -35,6 +36,11 @@ export default {
     textLabel: {
       type: String,
       required: true
+    },
+    textType: {
+      type: String,
+      required: false,
+      default: 'text'
     },
     textDataTestId: {
       type: String,
