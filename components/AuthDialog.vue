@@ -36,19 +36,9 @@
           :submit-content="submitContent"
         >
           <template #button-body>
-            <div
-              v-if="submissionOngoing"
-              class="lds-ellipsis"
-            >
-              <div />
-              <div />
-              <div />
-              <div />
-            </div>
-            <span
-              v-else
-              class="text-button"
-              v-text="actionName"
+            <button-progress
+              :btn-action-name="actionName"
+              :submission-ongoing="submissionOngoing"
             />
           </template>
         </base-button>
@@ -64,12 +54,14 @@
 import BaseDialog from '@/components/Base/BaseDialog'
 import BaseButton from '@/components/Base/BaseButton'
 import BaseAvatar from '@/components/Base/BaseAvatar'
+import ButtonProgress from '@/components/Base/ButtonProgress'
 export default {
   name: 'AuthDialog',
   components: {
     BaseAvatar,
     BaseDialog,
-    BaseButton
+    BaseButton,
+    ButtonProgress
   },
   props: {
     dialog: {
