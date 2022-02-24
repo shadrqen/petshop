@@ -43,7 +43,7 @@
       <v-spacer />
       <a
         :class="actionBtnClass + ' mr-2'"
-        @click="() => {}"
+        @click="openCloseRegistrationDialog(true)"
       >
         Don't have an account? Sign Up
       </a>
@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 import AuthDialog from '@/components/AuthDialog'
 
 export default {
@@ -76,7 +76,17 @@ export default {
     }
   },
   computed: {
-    ...mapState('auth', ['loginDialog'])
+    ...mapState('auth', ['loginDialog', 'registrationDialog'])
+  },
+  methods: {
+    ...mapMutations('auth', ['SET_REGISTRATION_DIALOG', 'SET_LOGIN_DIALOG']),
+    openCloseRegistrationDialog (value) {
+      console.log('open registration dialog')
+      if (this.loginDialog && !this.registrationDialog) {
+        this.SET_LOGIN_DIALOG(false)
+      }
+      this.SET_REGISTRATION_DIALOG(value)
+    }
   }
 }
 </script>

@@ -37,7 +37,6 @@
         </template>
       </base-button>
       <v-spacer />
-      {{ loginDialog }}
       <base-button
         :outlined="true"
         btn-class="white--text"
@@ -80,7 +79,8 @@
         </template>
       </client-only>
     </v-toolbar>
-    <login-dialog :dialog="loginDialog" />
+    <login-dialog />
+    <registration-dialog />
   </div>
 </template>
 
@@ -88,12 +88,14 @@
 import { mapMutations, mapState } from 'vuex'
 import BaseButton from '@/components/Base/BaseButton'
 import LoginDialog from '@/components/LoginDialog'
+import RegistrationDialog from '@/components/RegistrationDialog'
 
 export default {
   name: 'BaseHeader',
   components: {
     BaseButton,
-    LoginDialog
+    LoginDialog,
+    RegistrationDialog
   },
   data () {
     return {
@@ -102,7 +104,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('auth', ['userLoggedIn', 'loginDialog'])
+    ...mapState('auth', ['userLoggedIn'])
   },
   methods: {
     ...mapMutations('auth', ['SET_LOGIN_DIALOG']),
