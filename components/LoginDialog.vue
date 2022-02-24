@@ -5,32 +5,35 @@
     action-name="Log in"
     form-ref="loginForm"
     data-test-id="login-button"
-    :submit-content="() => {}"
     :dialog="loginDialog"
     :error="loginError"
     checkbox-label="Remember me"
     checkbox-data-test-id="remember-me-checkbox"
+    @submitContent="login"
     @closeDialog="openCloseDialogs('login')"
   >
     <template #text-fields>
-      <v-text-field
-        id="loginEmail"
+      <base-text-field
         v-model="loginForm.email"
-        data-test-id="login-email-field"
-        label="Email address *"
-        outlined
+        text-label="Email address *"
+        text-id="email-address"
+        text-data-test-id="login-email-field"
         type="email"
+        :outlined="true"
+        :text-rule="formValidation.emailRule"
+        @keyup.enter="login"
       />
-      <v-text-field
-        id="loginPassword"
+      <base-text-field
         v-model="loginForm.password"
-        data-test-id="login-password-field"
+        text-label="Password *"
+        text-id="password"
+        text-data-test-id="login-password-field"
         :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-        label="Password *"
-        outlined
+        :outlined="true"
         :type="showPassword ? 'text' : 'password'"
+        :text-rule="formValidation.passwordRule"
         @click:append="showPassword = !showPassword"
-        @keyup.enter="() => {}"
+        @keyup.enter="login"
       />
     </template>
     <template #action-buttons>
@@ -52,16 +55,20 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 import AuthDialog from '@/components/AuthDialog'
+import AuthenticationApi from '~/services/AuthenticationApi'
 import AuthenticationMixin from '@/mixins/AuthenticationMixin'
+import DialogsMixin from '@/mixins/DialogsMixin'
+import BaseTextField from '@/components/Base/BaseTextField'
 
 export default {
   name: 'BaseLogin',
   components: {
-    AuthDialog
+    AuthDialog,
+    BaseTextField
   },
-  mixins: [AuthenticationMixin],
+  mixins: [AuthenticationMixin, DialogsMixin],
   data () {
     return {
       loginOngoing: false,
@@ -81,9 +88,55 @@ export default {
     ...mapState('auth', ['loginDialog'])
   },
   methods: {
+    ...mapMutations('auth', ['SET_USER_LOGGED_IN', 'SET_ACCESS_TOKEN']),
     openResetPasswordPage () {
       this.openCloseDialogs('login')
       this.$router.push('/password-recovery')
+    },
+    async login () {
+      if (this.$refs.baseAuthDialog.$refs.loginForm.validate()) {
+        this.loginOngoing = true
+        await AuthenticationApi.loginUser(this.loginForm)
+          .then(response => {
+            this.processLoginResponse(response)
+          })
+          .catch(error => {
+            this.displayLoginError(error)
+          })
+        this.loginOngoing = false
+      }
+    },
+    /**
+     * Processes the login response in case of success. This includes actuall logging in
+     * of the user
+     * @param {{data, success}} response - The response object from the login api
+     * @return {void}
+     */
+    processLoginResponse (response) {
+      switch (response.success) {
+        case 1:
+          this.SET_USER_LOGGED_IN(true)
+          this.SET_ACCESS_TOKEN(response.data.token)
+          this.openCloseDialogs('login')
+          break
+        default:
+          break
+      }
+    },
+    displayLoginError (error) {
+      if (error.response.status === 422) {
+        this.loginError.error.push('Username/password mismatch')
+      } else {
+        this.loginError.error.push('Failed to log in')
+      }
+      this.loginError.status = true
+      setTimeout(() => {
+        this.resetLoginError()
+      }, 3000)
+    },
+    resetLoginError () {
+      this.loginError.error = []
+      this.loginError.status = false
     }
   }
 }

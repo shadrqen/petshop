@@ -14,7 +14,7 @@
     <template #content>
       <v-form
         :ref="formRef"
-        @submit.prevent="submitContent"
+        @submit.prevent="$emit('submitContent')"
       >
         <slot name="text-fields" />
         <v-checkbox
@@ -24,6 +24,16 @@
           class="mt-n2 mb-2"
           required
         />
+        <template v-if="error.status">
+          <base-alert
+            v-for="(errorToShow, errorIndex) in error.error"
+            :key="errorIndex"
+            :is-outlined="false"
+            alert-type="error"
+            :alert-message="errorToShow"
+            :is-dismissible="true"
+          />
+        </template>
         <base-button
           width="100%"
           color="white"
@@ -33,7 +43,7 @@
           :btn-id="actionBtnId"
           :btn-class="actionBtnClass"
           :action-ongoing="submissionOngoing"
-          :submit-content="submitContent"
+          @submitContent="$emit('submitContent')"
         >
           <template #button-body>
             <button-progress
@@ -51,6 +61,7 @@
 </template>
 
 <script>
+import BaseAlert from '@/components/Base/BaseAlert'
 import BaseDialog from '@/components/Base/BaseDialog'
 import BaseButton from '@/components/Base/BaseButton'
 import BaseAvatar from '@/components/Base/BaseAvatar'
@@ -58,6 +69,7 @@ import ButtonProgress from '@/components/Base/ButtonProgress'
 export default {
   name: 'AuthDialog',
   components: {
+    BaseAlert,
     BaseAvatar,
     BaseDialog,
     BaseButton,
@@ -66,10 +78,6 @@ export default {
   props: {
     dialog: {
       type: Boolean,
-      required: true
-    },
-    submitContent: {
-      type: Function,
       required: true
     },
     dataTestId: {

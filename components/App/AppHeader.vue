@@ -86,7 +86,7 @@ import BaseAvatar from '@/components/Base/BaseAvatar'
 import LoginDialog from '@/components/LoginDialog'
 import RegistrationDialog from '@/components/RegistrationDialog'
 import UserSetting from '@/components/UserSetting'
-import AuthenticationMixin from '@/mixins/AuthenticationMixin'
+import DialogsMixin from '@/mixins/DialogsMixin'
 
 export default {
   name: 'BaseHeader',
@@ -97,7 +97,7 @@ export default {
     RegistrationDialog,
     UserSetting
   },
-  mixins: [AuthenticationMixin],
+  mixins: [DialogsMixin],
   data () {
     return {
       cartItemsCount: 0,
