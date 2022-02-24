@@ -83,6 +83,7 @@ import { mapState } from 'vuex'
 import AuthDialog from '@/components/AuthDialog'
 import BaseTextField from '@/components/Base/BaseTextField'
 import AuthenticationMixin from '@/mixins/AuthenticationMixin'
+import DialogsMixin from '@/mixins/DialogsMixin'
 
 export default {
   name: 'RegistrationDialog',
@@ -90,7 +91,7 @@ export default {
     AuthDialog,
     BaseTextField
   },
-  mixins: [AuthenticationMixin],
+  mixins: [AuthenticationMixin, DialogsMixin],
   data () {
     return {
       registrationOngoing: false,
