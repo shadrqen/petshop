@@ -1,18 +1,19 @@
 export default {
   emailRule: [
-    (v: any) => !!v || 'Email is required',
-    (v: any) => !v || /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+    (v: string) => !!v || 'Email is required',
+    (v: string) => !v || /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
   ],
   passwordRule: [
-    (v: any) => !!v || 'Password is required'
+    (v: string) => !!v || 'Password is required',
+    (v: string) => (v && v.length >= 8) || 'The password must be at least 8 characters.'
   ],
   confirmPasswordRule: [
-    (v: any) => !!v || 'Password confirmation is required'
+    (v: string) => !!v || 'Password confirmation is required'
   ],
   firstNameRule: [
-    (v: any) => !!v || 'First name is required'
+    (v: string) => !!v || 'First name is required'
   ],
   lastNameRule: [
-    (v: any) => !!v || 'Last name is required'
+    (v: string) => !!v || 'Last name is required'
   ]
 }
