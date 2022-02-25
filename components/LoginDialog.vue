@@ -19,7 +19,7 @@
         text-label="Email address *"
         text-id="email-address"
         text-data-test-id="login-email-field"
-        type="email"
+        text-type="email"
         :outlined="true"
         :text-rule="formValidation.emailRule"
         @keyup.enter="login"
@@ -31,9 +31,9 @@
         text-data-test-id="login-password-field"
         :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
         :outlined="true"
-        :type="showPassword ? 'text' : 'password'"
+        :text-type="showPassword ? 'text' : 'password'"
         :text-rule="formValidation.passwordRule"
-        @click:append="showPassword = !showPassword"
+        @clickAppendIcon="showPassword = !showPassword"
         @keyup.enter="login"
       />
     </template>
@@ -54,7 +54,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import AuthDialog from '@/components/AuthDialog'
 import AuthenticationApi from '~/services/AuthenticationApi'
 import AuthenticationMixin from '@/mixins/AuthenticationMixin'
@@ -85,13 +84,10 @@ export default {
       actionBtnClass: 'text-decoration-none mb-3 body-2'
     }
   },
-  computed: {
-    ...mapState('auth', ['loginDialog'])
-  },
   methods: {
     openResetPasswordPage () {
       this.openCloseDialogs('login')
-      this.$router.push('/password-recovery')
+      this.$router.push('/recover-password')
     },
     async login () {
       if (this.$refs.baseAuthDialog.$refs.loginForm.validate()) {

@@ -45,7 +45,7 @@
         text-label="Email address *"
         text-id="registration-email"
         text-data-test-id="registration-email-field"
-        type="email"
+        text-type="email"
         :text-rule="formValidation.emailRule"
         :outlined="true"
       />
@@ -56,9 +56,9 @@
         text-data-test-id="registration-password-field"
         :outlined="true"
         :text-rule="formValidation.passwordRule"
-        :type="showPassword ? 'text' : 'password'"
+        :text-type="showPassword ? 'text' : 'password'"
         :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-        @click:append="showPassword = !showPassword"
+        @clickAppendIcon="showPassword = !showPassword"
       />
       <base-text-field
         v-model="registrationForm.password_confirmation"
@@ -67,9 +67,9 @@
         text-data-test-id="registration-confirm-password-field"
         :outlined="true"
         :text-rule="passwordSimilarityRule"
-        :type="showPassword ? 'text' : 'password'"
+        :text-type="showPassword ? 'text' : 'password'"
         :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-        @click:append="showPassword = !showPassword"
+        @clickAppendIcon="showPassword = !showPassword"
       />
     </template>
     <template #action-buttons>
@@ -83,7 +83,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import AuthenticationMixin from '@/mixins/AuthenticationMixin'
 import AuthDialog from '@/components/AuthDialog'
 import AuthenticationApi from '~/services/AuthenticationApi'
@@ -123,20 +122,15 @@ export default {
       }
     }
   },
-  computed: {
-    ...mapState('auth', ['registrationDialog'])
-  },
   methods: {
     async register () {
       if (this.$refs.baseAuthDialog.$refs.registrationForm.validate()) {
         this.registrationOngoing = true
         await AuthenticationApi.registerUser(this.registrationForm)
           .then(response => {
-            console.log('response')
             this.processApiResponse(response, 'registration')
           })
           .catch(error => {
-            console.log('catch')
             this.processApiError(error.response, 'registration')
           })
         this.registrationOngoing = false

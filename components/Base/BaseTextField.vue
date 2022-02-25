@@ -12,6 +12,7 @@
     :hide-details="hideDetails"
     :solo="solo"
     :type="textType"
+    @click:append="$emit('clickAppendIcon')"
     @input="$emit('input', $event)"
   />
 </template>

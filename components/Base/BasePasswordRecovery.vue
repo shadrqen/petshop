@@ -16,6 +16,7 @@
             color="white"
             class="white--text"
             :background-color="btnBackgroundColor"
+            @click="$emit('submitContent')"
           >
             <template #button-body>
               {{ actionContent }}
