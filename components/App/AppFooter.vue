@@ -1,12 +1,12 @@
 <template>
   <v-footer
     :color="footerColor"
-    padless
+    class="py-16"
   >
     <v-container>
       <v-row
         no-gutters
-        justify="center"
+        justify="left"
       >
         <v-col>
           <img
@@ -28,7 +28,7 @@
           </div>
         </v-col>
         <v-col
-          class="text-center my-3 body-2"
+          class="my-3 body-2"
         >
           If you can't find answer to your question, please contact our <a
             id="customer-service-footer-span"
