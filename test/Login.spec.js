@@ -50,6 +50,7 @@ const vuetify = new Vuetify()
 describe('Authentication Service -> Log in User', () => {
   let wrapper, mutations, store, state
   // let spyOnLogin, loginButton
+  let loginButton
 
   afterAll(() => mock.restore())
 
@@ -78,7 +79,7 @@ describe('Authentication Service -> Log in User', () => {
       vuetify,
       router
     })
-    // loginButton = wrapper.find('[data-test-id="login-button"]')
+    loginButton = wrapper.find('[data-test-id="login-button"]')
   })
 
   describe('Given a valid email and password', () => {
@@ -92,10 +93,6 @@ describe('Authentication Service -> Log in User', () => {
         * as false to stop further processing */
         // wrapper.vm.$refs.baseAuthDialog.$refs.loginForm.validate = () => true
         // await loginButton.vm.$emit('click')
-
-        // const btn = wrapper.find('#some-stuff')
-
-        // expect(btn.exists()).toBe(true)
 
         /* Assert */
         // expect(loginButton.exists()).toBe(true)
