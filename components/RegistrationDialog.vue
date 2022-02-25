@@ -115,7 +115,7 @@ export default {
         value => !!value || 'Password confirmation is required',
         value => value === this.registrationForm.password || 'Passwords must match'
       ],
-      actionBtnClass: 'text-decoration-none mb-3 body-2 justify-center',
+      actionBtnClass: 'text-decoration-none mb-3 ml-2 body-2 justify-center',
       registrationError: {
         status: false,
         error: []
