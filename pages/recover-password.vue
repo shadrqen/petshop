@@ -3,6 +3,7 @@
     action-content="Get Recovery Link"
     :recovery-sub-title="recoverySubTitle"
     recovery-title="Recover password"
+    @submitContent="$router.push('/change-password')"
   >
     <template #text-fields>
       <base-text-field
@@ -10,6 +11,7 @@
         text-id="email-address"
         text-data-test-id="email-address-field"
         text-class="mt-6"
+        text-type="email"
         :outlined="true"
       />
     </template>
