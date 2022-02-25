@@ -50,7 +50,7 @@ const vuetify = new Vuetify()
 describe('Authentication Service -> Log in User', () => {
   let wrapper, mutations, store, state
   // let spyOnLogin, loginButton
-  let loginButton
+  // let loginButton
 
   afterAll(() => mock.restore())
 
@@ -79,7 +79,7 @@ describe('Authentication Service -> Log in User', () => {
       vuetify,
       router
     })
-    loginButton = wrapper.find('[data-test-id="login-button"]')
+    // loginButton = wrapper.find('[data-test-id="login-button"]')
   })
 
   describe('Given a valid email and password', () => {
