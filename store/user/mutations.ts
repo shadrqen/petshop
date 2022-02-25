@@ -8,7 +8,7 @@ const getDefaultUserState = () => {
 }
 
 export const mutations: MutationTree<UserState> = {
-  SET_USER_LOGGED_IN: (state: UserState, payload: boolean) => {
+  SET_SETTINGS_DIALOG: (state: UserState, payload: boolean) => {
     state.settingsDialog = payload
   },
   RESET_USER_STATE: (state: UserState) => {
