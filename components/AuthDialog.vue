@@ -5,11 +5,20 @@
     @closeDialog="$emit('closeDialog')"
   >
     <template #title>
-      <base-avatar
-        image-alt="Logo"
-        image-src="logo.PNG"
-        avatar-class="mx-2"
-      />
+      <v-row class="mt-n6">
+        <v-col>
+          <v-row class="justify-center">
+            <base-avatar
+              image-alt="Logo"
+              image-src="logo.PNG"
+              avatar-class="mx-2"
+            />
+          </v-row>
+          <v-row class="justify-center mt-6 mb-3">
+            {{ actionName }}
+          </v-row>
+        </v-col>
+      </v-row>
     </template>
     <template #content>
       <v-form
