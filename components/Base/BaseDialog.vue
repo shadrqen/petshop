@@ -8,6 +8,7 @@
   >
     <v-card>
       <v-toolbar
+        v-if="topCloseButton"
         flat
         short
       >
@@ -44,6 +45,11 @@ export default {
     maxWidth: {
       type: Number,
       required: true
+    },
+    topCloseButton: {
+      type: Boolean,
+      required: false,
+      default: true
     }
   },
   computed: {

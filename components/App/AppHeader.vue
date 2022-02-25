@@ -47,7 +47,7 @@
           <base-button
             btn-class="white--text mx-1"
             :outlined="true"
-            @submitContent="openCloseLoginDialog(false)"
+            @submitContent="openCloseDialogs('logout', 'open')"
           >
             <template #button-body>
               Logout
@@ -74,6 +74,7 @@
       </client-only>
     </v-toolbar>
     <login-dialog />
+    <logout-notification />
     <registration-dialog />
     <user-setting />
   </div>
@@ -83,10 +84,11 @@
 import { mapState } from 'vuex'
 import BaseButton from '@/components/Base/BaseButton'
 import BaseAvatar from '@/components/Base/BaseAvatar'
+import DialogsMixin from '@/mixins/DialogsMixin'
 import LoginDialog from '@/components/LoginDialog'
+import LogoutNotification from '@/components/LogoutNotification'
 import RegistrationDialog from '@/components/RegistrationDialog'
 import UserSetting from '@/components/UserSetting'
-import DialogsMixin from '@/mixins/DialogsMixin'
 
 export default {
   name: 'BaseHeader',
@@ -94,6 +96,7 @@ export default {
     BaseAvatar,
     BaseButton,
     LoginDialog,
+    LogoutNotification,
     RegistrationDialog,
     UserSetting
   },

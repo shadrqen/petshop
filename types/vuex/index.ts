@@ -1,6 +1,7 @@
 export interface AuthState {
   userLoggedIn: boolean,
   loginDialog: boolean,
+  logoutDialog: boolean,
   registrationDialog: boolean,
   accessToken: string
 }

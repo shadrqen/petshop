@@ -5,7 +5,7 @@ export default {
     ...mapState('auth', ['loginDialog', 'registrationDialog'])
   },
   methods: {
-    ...mapMutations('auth', ['SET_LOGIN_DIALOG', 'SET_REGISTRATION_DIALOG']),
+    ...mapMutations('auth', ['SET_LOGIN_DIALOG', 'SET_LOGOUT_DIALOG', 'SET_REGISTRATION_DIALOG']),
     /**
      * Opens or closes dialogs
      * @param {string} type - The type of dialog (login or registration)
@@ -20,6 +20,9 @@ export default {
             this.SET_REGISTRATION_DIALOG(!MUTATION_VALUE)
           }
           this.SET_LOGIN_DIALOG(MUTATION_VALUE)
+          break
+        case 'logout':
+          this.SET_LOGOUT_DIALOG(MUTATION_VALUE)
           break
         case 'registration':
           if (this.loginDialog && !this.registrationDialog) {
