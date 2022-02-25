@@ -2,6 +2,7 @@
   <v-avatar
     :class="avatarClass"
     :size="avatarSize"
+    @click="$emit('clickAction')"
   >
     <img
       :src="require(`@/assets/${imageSrc}`)"
@@ -36,6 +37,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.cursor-pointer {
+  cursor: pointer;
+}
 </style>

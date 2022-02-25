@@ -1,11 +1,12 @@
 <template>
   <base-dialog
-    :max-width="800"
+    :max-width="1000"
     :dialog="settingsDialog"
+    @closeDialog="openCloseDialogs('settings')"
   >
     <template #title>
       <div class="headline mt-n5">
-        User Settings
+        User settings
       </div>
     </template>
     <template #content>
@@ -17,6 +18,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import DialogsMixin from '@/mixins/DialogsMixin'
 import BaseDialog from '@/components/Base/BaseDialog'
 import LatestOrder from '@/components/LatestOrder'
 import UserDetail from '@/components/UserDetail'
@@ -27,6 +29,7 @@ export default {
     LatestOrder,
     UserDetail
   },
+  mixins: [DialogsMixin],
   computed: {
     ...mapState('user', ['settingsDialog'])
   }

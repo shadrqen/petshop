@@ -57,7 +57,8 @@
             image-alt="Profile"
             image-src="profile.jpg"
             :avatar-size="35"
-            avatar-class="mx-2"
+            avatar-class="mx-2 cursor-pointer"
+            @clickAction="openCloseDialogs('settings', 'open')"
           />
         </template>
         <template v-else>

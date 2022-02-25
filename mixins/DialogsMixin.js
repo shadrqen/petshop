@@ -6,6 +6,7 @@ export default {
   },
   methods: {
     ...mapMutations('auth', ['SET_LOGIN_DIALOG', 'SET_LOGOUT_DIALOG', 'SET_REGISTRATION_DIALOG']),
+    ...mapMutations('user', ['SET_SETTINGS_DIALOG']),
     /**
      * Opens or closes dialogs
      * @param {string} type - The type of dialog (login or registration)
@@ -29,6 +30,9 @@ export default {
             this.SET_LOGIN_DIALOG(!MUTATION_VALUE)
           }
           this.SET_REGISTRATION_DIALOG(MUTATION_VALUE)
+          break
+        case 'settings':
+          this.SET_SETTINGS_DIALOG(MUTATION_VALUE)
           break
       }
     }
