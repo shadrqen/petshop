@@ -5,22 +5,23 @@
     action-name="Sign Up"
     form-ref="registrationForm"
     data-test-id="registration-button"
-    :submit-content="register"
     :dialog="registrationDialog"
     :error="registrationError"
     checkbox-data-test-id="promotional-marketing-checkbox"
     checkbox-label="I want to receive inspiration, marketing promotions and updates via email"
+    @submitContent="register"
     @closeDialog="openCloseDialogs('registration')"
   >
     <template #text-fields>
       <v-row no-gutters>
         <v-col cols="6">
           <base-text-field
-            v-model="registrationForm.last_name"
+            v-model="registrationForm.first_name"
             text-label="First Name *"
             text-id="first-name"
             text-class="mr-1"
             text-data-test-id="first-name-field"
+            :text-rule="formValidation.firstNameRule"
             :outlined="true"
           />
         </v-col>
@@ -34,6 +35,7 @@
             text-id="last-name"
             text-class="ml-1"
             text-data-test-id="last-name-field"
+            :text-rule="formValidation.lastNameRule"
             :outlined="true"
           />
         </v-col>
@@ -43,8 +45,9 @@
         text-label="Email address *"
         text-id="registration-email"
         text-data-test-id="registration-email-field"
-        :outlined="true"
         type="email"
+        :text-rule="formValidation.emailRule"
+        :outlined="true"
       />
       <base-text-field
         v-model="registrationForm.password"
@@ -52,6 +55,7 @@
         text-id="registration-password"
         text-data-test-id="registration-password-field"
         :outlined="true"
+        :text-rule="formValidation.passwordRule"
         :type="showPassword ? 'text' : 'password'"
         :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
         @click:append="showPassword = !showPassword"
@@ -62,6 +66,7 @@
         text-id="registration-password"
         text-data-test-id="registration-confirm-password-field"
         :outlined="true"
+        :text-rule="passwordSimilarityRule"
         :type="showPassword ? 'text' : 'password'"
         :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
         @click:append="showPassword = !showPassword"
@@ -104,6 +109,10 @@ export default {
         password: '',
         password_confirmation: ''
       },
+      passwordSimilarityRule: [
+        value => !!value || 'Password confirmation is required',
+        value => value === this.registrationForm.password || 'Passwords must match'
+      ],
       actionBtnClass: 'text-decoration-none mb-3 body-2 justify-center',
       registrationError: {
         status: false,
@@ -115,7 +124,11 @@ export default {
     ...mapState('auth', ['registrationDialog'])
   },
   methods: {
-    register () {}
+    register () {
+      if (this.$refs.baseAuthDialog.$refs.registrationForm.validate()) {
+        console.log('Form is valid')
+      }
+    }
   }
 }
 </script>

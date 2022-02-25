@@ -7,9 +7,6 @@ export default {
     (v: string) => !!v || 'Password is required',
     (v: string) => (v && v.length >= 8) || 'The password must be at least 8 characters.'
   ],
-  confirmPasswordRule: [
-    (v: string) => !!v || 'Password confirmation is required'
-  ],
   firstNameRule: [
     (v: string) => !!v || 'First name is required'
   ],
