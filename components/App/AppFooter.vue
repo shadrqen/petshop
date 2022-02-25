@@ -6,7 +6,6 @@
     <v-container>
       <v-row
         no-gutters
-        justify="left"
       >
         <v-col>
           <img
