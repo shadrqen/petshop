@@ -68,27 +68,28 @@
       />
     </template>
     <template #action-buttons>
-      <a
-        :class="actionBtnClass"
-        @click="openCloseDialogs('login', 'open')"
-      >
-        Already have an account? Log in
-      </a>
+      <base-hyperlink
+        link-body="Already have an account? Log in"
+        :link-class="actionBtnClass"
+        @linkAction="openCloseDialogs('login', 'open')"
+      />
     </template>
   </auth-dialog>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import AuthDialog from '@/components/AuthDialog'
-import BaseTextField from '@/components/Base/BaseTextField'
 import AuthenticationMixin from '@/mixins/AuthenticationMixin'
+import AuthDialog from '@/components/AuthDialog'
+import BaseHyperlink from '@/components/Base/BaseHyperlink'
+import BaseTextField from '@/components/Base/BaseTextField'
 import DialogsMixin from '@/mixins/DialogsMixin'
 
 export default {
   name: 'RegistrationDialog',
   components: {
     AuthDialog,
+    BaseHyperlink,
     BaseTextField
   },
   mixins: [AuthenticationMixin, DialogsMixin],
