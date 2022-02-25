@@ -7,6 +7,7 @@ import { actions } from '~/store/auth/actions'
 const state = {
   userLoggedIn: false,
   loginDialog: false,
+  logoutDialog: false,
   registrationDialog: false,
   accessToken: ''
 }
