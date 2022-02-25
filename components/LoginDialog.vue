@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex'
+import { mapState } from 'vuex'
 import AuthDialog from '@/components/AuthDialog'
 import AuthenticationApi from '~/services/AuthenticationApi'
 import AuthenticationMixin from '@/mixins/AuthenticationMixin'
@@ -89,7 +89,6 @@ export default {
     ...mapState('auth', ['loginDialog'])
   },
   methods: {
-    ...mapMutations('auth', ['SET_USER_LOGGED_IN', 'SET_ACCESS_TOKEN']),
     openResetPasswordPage () {
       this.openCloseDialogs('login')
       this.$router.push('/password-recovery')
@@ -99,41 +98,13 @@ export default {
         this.loginOngoing = true
         await AuthenticationApi.loginUser(this.loginForm)
           .then(response => {
-            this.processLoginResponse(response)
+            this.processApiResponse(response, 'login')
           })
           .catch(error => {
-            this.displayLoginError(error)
+            this.processApiError(error.response, 'login')
           })
         this.loginOngoing = false
       }
-    },
-    /**
-     * Processes the login response in case of success. This includes actuall logging in
-     * of the user
-     * @param {{data, success}} response - The response object from the login api
-     * @return {void}
-     */
-    processLoginResponse (response) {
-      switch (response.success) {
-        case 1:
-          this.SET_USER_LOGGED_IN(true)
-          this.SET_ACCESS_TOKEN(response.data.token)
-          this.openCloseDialogs('login')
-          break
-        default:
-          break
-      }
-    },
-    displayLoginError (error) {
-      if (error.response.status === 422) {
-        this.loginError.error.push('Username/password mismatch')
-      } else {
-        this.loginError.error.push('Failed to log in')
-      }
-      this.loginError.status = true
-      setTimeout(() => {
-        this.resetLoginError()
-      }, 3000)
     },
     resetLoginError () {
       this.loginError.error = []
