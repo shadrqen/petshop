@@ -86,6 +86,7 @@
 import { mapState } from 'vuex'
 import AuthenticationMixin from '@/mixins/AuthenticationMixin'
 import AuthDialog from '@/components/AuthDialog'
+import AuthenticationApi from '~/services/AuthenticationApi'
 import BaseHyperlink from '@/components/Base/BaseHyperlink'
 import BaseTextField from '@/components/Base/BaseTextField'
 import DialogsMixin from '@/mixins/DialogsMixin'
@@ -106,6 +107,8 @@ export default {
         first_name: '',
         last_name: '',
         email: '',
+        address: 'Nairobi, Kenya', // Field is necessary on the api, but not on UI, so I set a default
+        phone_number: '+12345678910', // Field is necessary on the api, but not on UI, so I set a default
         password: '',
         password_confirmation: ''
       },
@@ -124,10 +127,41 @@ export default {
     ...mapState('auth', ['registrationDialog'])
   },
   methods: {
-    register () {
+    async register () {
       if (this.$refs.baseAuthDialog.$refs.registrationForm.validate()) {
-        console.log('Form is valid')
+        this.registrationOngoing = true
+        await AuthenticationApi.registerUser(this.registrationForm)
+          .then(response => {
+            console.log('response')
+            this.processApiResponse(response, 'registration')
+          })
+          .catch(error => {
+            console.log('catch')
+            this.processApiError(error.response, 'registration')
+          })
+        this.registrationOngoing = false
       }
+    },
+    /**
+     * Pushes registration errors to the errors array
+     * @param {{status,data}} error - The error object
+     * @return {void}
+     */
+    pushRegistrationErrors (error) {
+      if (error.data.error === 'Failed Validation') {
+        const RESPONSE_ERRORS = error.data.errors
+        for (const key in RESPONSE_ERRORS) {
+          RESPONSE_ERRORS[key].forEach(err => {
+            this.registrationError.error.push(err)
+          })
+        }
+      } else {
+        this.registrationError.error.push('Failed to register! Try again')
+      }
+    },
+    resetRegistrationError () {
+      this.registrationError.error = []
+      this.registrationError.status = false
     }
   }
 }

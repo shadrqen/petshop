@@ -10,7 +10,7 @@ export default {
     /**
      * Opens or closes dialogs
      * @param {string} type - The type of dialog (login or registration)
-     * @param {string} action - The action to take on a dialog (open or otherwise close)
+     * @param {string} action - The action to take on a dialog (open or close)
      * @return {void}
      */
     openCloseDialogs (type, action = 'close') {

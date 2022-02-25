@@ -4,13 +4,12 @@ export interface LoginRequest {
 }
 
 export interface RegistrationRequest {
-  // eslint-disable-next-line camelcase
   first_name: string,
-  // eslint-disable-next-line camelcase
   last_name: string,
   email: string,
+  address: string,
+  phone_number: string,
   password: string,
-  // eslint-disable-next-line camelcase
   password_confirmation: string
 }
 
