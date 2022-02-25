@@ -37,19 +37,17 @@
       />
     </template>
     <template #action-buttons>
-      <a
-        :class="actionBtnClass + ' ml-2'"
-        @click="openResetPasswordPage"
-      >
-        Forgot password?
-      </a>
+      <base-hyperlink
+        link-body="Forgot password?"
+        :link-class="actionBtnClass + ' ml-2'"
+        @linkAction="openResetPasswordPage"
+      />
       <v-spacer />
-      <a
-        :class="actionBtnClass + ' mr-2'"
-        @click="openCloseDialogs('registration', 'open')"
-      >
-        Don't have an account? Sign Up
-      </a>
+      <base-hyperlink
+        link-body="Don't have an account? Sign Up"
+        :link-class="actionBtnClass + ' mr-2'"
+        @linkAction="openCloseDialogs('registration', 'open')"
+      />
     </template>
   </auth-dialog>
 </template>
@@ -59,13 +57,15 @@ import { mapMutations, mapState } from 'vuex'
 import AuthDialog from '@/components/AuthDialog'
 import AuthenticationApi from '~/services/AuthenticationApi'
 import AuthenticationMixin from '@/mixins/AuthenticationMixin'
-import DialogsMixin from '@/mixins/DialogsMixin'
+import BaseHyperlink from '@/components/Base/BaseHyperlink'
 import BaseTextField from '@/components/Base/BaseTextField'
+import DialogsMixin from '@/mixins/DialogsMixin'
 
 export default {
   name: 'BaseLogin',
   components: {
     AuthDialog,
+    BaseHyperlink,
     BaseTextField
   },
   mixins: [AuthenticationMixin, DialogsMixin],
