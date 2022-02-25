@@ -6,7 +6,7 @@
     :max-width="maxWidth"
     persistent
   >
-    <v-card>
+    <v-card class="px-6">
       <v-toolbar
         v-if="topCloseButton"
         flat

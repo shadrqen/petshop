@@ -1,7 +1,7 @@
 <template>
   <base-dialog
     :dialog="dialog"
-    :max-width="420"
+    :max-width="450"
     @closeDialog="$emit('closeDialog')"
   >
     <template #title>
