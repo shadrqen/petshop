@@ -3,6 +3,7 @@
     ref="baseAuthDialog"
     :submission-ongoing="loginOngoing"
     action-name="Log in"
+    action-btn-id="some-stuff"
     form-ref="loginForm"
     data-test-id="login-button"
     :dialog="loginDialog"
