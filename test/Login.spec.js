@@ -22,7 +22,7 @@ import MockAdapter from 'axios-mock-adapter'
 
 import Vuetify from 'vuetify'
 
-import LoginDialog from '@/components/LoginDialog.vue'
+import LoginDialog from '~/components/Auth/LoginDialog.vue'
 
 import VueRouter from 'vue-router'
 

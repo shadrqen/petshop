@@ -86,10 +86,10 @@ import { mapState } from 'vuex'
 import BaseButton from '@/components/Base/BaseButton'
 import BaseAvatar from '@/components/Base/BaseAvatar'
 import DialogsMixin from '@/mixins/DialogsMixin'
-import LoginDialog from '@/components/LoginDialog'
-import LogoutNotification from '@/components/LogoutNotification'
-import RegistrationDialog from '@/components/RegistrationDialog'
-import UserSetting from '@/components/UserSetting'
+import LoginDialog from '@/components/Auth/LoginDialog'
+import LogoutNotification from '@/components/Auth/LogoutNotification'
+import RegistrationDialog from '@/components/Auth/RegistrationDialog'
+import UserSetting from '@/components/User/UserSetting'
 
 export default {
   name: 'BaseHeader',

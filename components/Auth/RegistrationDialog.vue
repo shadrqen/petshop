@@ -84,7 +84,7 @@
 
 <script>
 import AuthenticationMixin from '@/mixins/AuthenticationMixin'
-import AuthDialog from '@/components/AuthDialog'
+import AuthDialog from '~/components/Auth/AuthDialog'
 import AuthenticationApi from '~/services/AuthenticationApi'
 import BaseHyperlink from '@/components/Base/BaseHyperlink'
 import BaseTextField from '@/components/Base/BaseTextField'

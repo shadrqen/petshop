@@ -20,8 +20,8 @@
 import { mapState } from 'vuex'
 import DialogsMixin from '@/mixins/DialogsMixin'
 import BaseDialog from '@/components/Base/BaseDialog'
-import LatestOrder from '@/components/LatestOrder'
-import UserDetail from '@/components/UserDetail'
+import LatestOrder from '@/components/Order/LatestOrder'
+import UserDetail from '@/components/User/UserDetail'
 export default {
   name: 'UserSetting',
   components: {

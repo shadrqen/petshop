@@ -19,7 +19,7 @@ import MockAdapter from 'axios-mock-adapter'
 
 import Vuetify from 'vuetify'
 
-import RegistrationDialog from '@/components/RegistrationDialog.vue'
+import RegistrationDialog from '~/components/Auth/RegistrationDialog.vue'
 
 import VueRouter from 'vue-router'
 
