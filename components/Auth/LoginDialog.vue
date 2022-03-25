@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import AuthDialog from '@/components/AuthDialog'
+import AuthDialog from '~/components/Auth/AuthDialog'
 import AuthenticationApi from '~/services/AuthenticationApi'
 import AuthenticationMixin from '@/mixins/AuthenticationMixin'
 import BaseHyperlink from '@/components/Base/BaseHyperlink'
