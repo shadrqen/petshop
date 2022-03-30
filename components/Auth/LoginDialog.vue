@@ -62,7 +62,7 @@ import BaseTextField from '@/components/Base/BaseTextField'
 import DialogsMixin from '@/mixins/DialogsMixin'
 
 export default {
-  name: 'BaseLogin',
+  name: 'LoginDialog',
   components: {
     AuthDialog,
     BaseHyperlink,
