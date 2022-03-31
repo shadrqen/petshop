@@ -2,6 +2,7 @@
   <div
     v-if="submissionOngoing"
     class="lds-ellipsis"
+    data-test="lds-ellipsis"
   >
     <div />
     <div />
