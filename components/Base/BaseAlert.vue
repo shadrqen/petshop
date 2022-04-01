@@ -22,12 +22,12 @@ export default {
     },
     isOutlined: {
       type: Boolean,
-      required: true,
+      required: false,
       default: false
     },
     isDismissible: {
       type: Boolean,
-      required: true,
+      required: false,
       default: false
     }
   }
