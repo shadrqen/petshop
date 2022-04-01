@@ -1,6 +1,9 @@
+import Vue from 'vue'
+import Vuetify from 'vuetify'
 import { shallowMount } from '@vue/test-utils'
-
 import BaseButton from '~/components/Base/BaseButton.vue'
+
+Vue.use(Vuetify)
 
 describe('@/components/Base/BaseButton.vue', () => {
   it('Renders empty string by default without button-body slot', async () => {

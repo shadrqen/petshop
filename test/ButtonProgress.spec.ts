@@ -1,5 +1,9 @@
+import Vue from 'vue'
+import Vuetify from 'vuetify'
 import { shallowMount } from '@vue/test-utils'
 import ButtonProgress from '~/components/Base/ButtonProgress.vue'
+
+Vue.use(Vuetify)
 
 describe('@/components/Base/ButtonProgress.vue', () => {
   it('Renders action name when loading is not in progress', () => {
