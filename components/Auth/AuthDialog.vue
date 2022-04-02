@@ -55,7 +55,7 @@
           @submitContent="$emit('submitContent')"
         >
           <template #button-body>
-            <button-progress
+            <base-button-progress
               :btn-action-name="actionName"
               :submission-ongoing="submissionOngoing"
             />
@@ -74,7 +74,7 @@ import BaseAlert from '@/components/Base/BaseAlert'
 import BaseDialog from '@/components/Base/BaseDialog'
 import BaseButton from '@/components/Base/BaseButton'
 import BaseAvatar from '@/components/Base/BaseAvatar'
-import ButtonProgress from '@/components/Base/ButtonProgress'
+import BaseButtonProgress from '@/components/Base/BaseButtonProgress'
 export default {
   name: 'AuthDialog',
   components: {
@@ -82,7 +82,7 @@ export default {
     BaseAvatar,
     BaseDialog,
     BaseButton,
-    ButtonProgress
+    BaseButtonProgress
   },
   props: {
     dialog: {

@@ -1,12 +1,12 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils'
-import ButtonProgress from '~/components/Base/ButtonProgress.vue'
+import BaseButtonProgress from '~/components/Base/BaseButtonProgress.vue'
 import { ComponentMount } from '~/test/types'
 
 describe('@/components/Base/ButtonProgress.vue', () => {
   const localVue = createLocalVue()
 
   const mountComponent = (options: ComponentMount = {}) => {
-    return shallowMount(ButtonProgress, {
+    return shallowMount(BaseButtonProgress, {
       localVue,
       ...options
     })
