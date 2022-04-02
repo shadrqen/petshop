@@ -28,9 +28,13 @@
   </v-card>
 </template>
 
-<script>
+<script lang="ts">
+import BaseButton from '~/components/Base/BaseButton.vue'
 export default {
   name: 'BaseDataTable',
+  components: {
+    BaseButton
+  },
   props: {
     headers: {
       type: Array,
