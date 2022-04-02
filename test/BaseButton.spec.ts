@@ -1,20 +1,26 @@
-import Vue from 'vue'
-import Vuetify from 'vuetify'
-import { shallowMount } from '@vue/test-utils'
+import { createLocalVue, shallowMount } from '@vue/test-utils'
 import BaseButton from '~/components/Base/BaseButton.vue'
-
-Vue.use(Vuetify)
+import { ComponentMount } from '~/test/types'
 
 describe('@/components/Base/BaseButton.vue', () => {
+  const localVue = createLocalVue()
+
+  const mountComponent = (options: ComponentMount = {}) => {
+    return shallowMount(BaseButton, {
+      localVue,
+      ...options
+    })
+  }
+
   it('Renders empty string by default without button-body slot', async () => {
-    const { element } = shallowMount(BaseButton)
+    const { element } = mountComponent()
 
     expect(element.innerHTML).toContain('')
   })
 
   it('Renders button-body slot', () => {
     const slotContent = 'Register'
-    const { element } = shallowMount(BaseButton, {
+    const { element } = mountComponent({
       slots: {
         'button-body': slotContent
       }
@@ -24,7 +30,7 @@ describe('@/components/Base/BaseButton.vue', () => {
   })
 
   it('Disables button when loading is ongoing', () => {
-    const wrapper = shallowMount(BaseButton, {
+    const wrapper = mountComponent({
       propsData: {
         actionOngoing: true
       }
@@ -34,7 +40,7 @@ describe('@/components/Base/BaseButton.vue', () => {
   })
 
   it('Applies dynamic width passed as prop', () => {
-    const wrapper = shallowMount(BaseButton, {
+    const wrapper = mountComponent({
       propsData: {
         width: '100px'
       }

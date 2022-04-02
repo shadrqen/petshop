@@ -10,6 +10,8 @@ module.exports = {
     'vue',
     'json'
   ],
+  // globalSetup: '<rootDir>/test/jest-global-setup.js',
+  setupFilesAfterEnv: ['<rootDir>/test/setup/vuetify-setup-after-env.js'],
   transform: {
     '^.+\\.ts$': 'ts-jest',
     '^.+\\.js$': 'babel-jest',

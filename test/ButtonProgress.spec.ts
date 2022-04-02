@@ -1,14 +1,20 @@
-import Vue from 'vue'
-import Vuetify from 'vuetify'
-import { shallowMount } from '@vue/test-utils'
+import { createLocalVue, shallowMount } from '@vue/test-utils'
 import ButtonProgress from '~/components/Base/ButtonProgress.vue'
-
-Vue.use(Vuetify)
+import { ComponentMount } from '~/test/types'
 
 describe('@/components/Base/ButtonProgress.vue', () => {
+  const localVue = createLocalVue()
+
+  const mountComponent = (options: ComponentMount = {}) => {
+    return shallowMount(ButtonProgress, {
+      localVue,
+      ...options
+    })
+  }
+
   it('Renders action name when loading is not in progress', () => {
     const btnActionName = 'Login'
-    const { element } = shallowMount(ButtonProgress, {
+    const { element } = mountComponent({
       propsData: {
         submissionOngoing: false,
         btnActionName
@@ -20,7 +26,7 @@ describe('@/components/Base/ButtonProgress.vue', () => {
 
   it('Does not render action name when loading is in progress', () => {
     const btnActionName = 'Login'
-    const { element } = shallowMount(ButtonProgress, {
+    const { element } = mountComponent({
       propsData: {
         submissionOngoing: true,
         btnActionName
@@ -33,7 +39,7 @@ describe('@/components/Base/ButtonProgress.vue', () => {
   it('Renders ellipsis loader when loading is in progress', () => {
     const ellipsis = '<div></div> <div></div> <div></div> <div></div>'
     const btnActionName = 'Login'
-    const { element } = shallowMount(ButtonProgress, {
+    const { element } = mountComponent({
       propsData: {
         submissionOngoing: true,
         btnActionName
