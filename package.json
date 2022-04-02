@@ -11,7 +11,7 @@
     "lint": "npm run lint:js",
     "lintfix": "npm run lint:js -- --fix",
     "prepare": "husky install",
-    "test:unit": "jest",
+    "test:unit": "jest --verbose",
     "test:unit:watch": "jest --watch"
   },
   "dependencies": {

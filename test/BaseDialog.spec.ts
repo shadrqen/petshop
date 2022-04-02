@@ -1,12 +1,17 @@
-import Vue from 'vue'
-import Vuetify from 'vuetify'
-import { shallowMount } from '@vue/test-utils'
+import { createLocalVue, shallowMount } from '@vue/test-utils'
 import BaseDialog from '~/components/Base/BaseDialog.vue'
-import { BaseDialogProps } from '~/test/types'
-
-Vue.use(Vuetify)
+import { BaseDialogProps, ComponentMount } from '~/test/types'
 
 describe('@/components/Base/BaseDialog.vue', () => {
+  const localVue = createLocalVue()
+
+  const mountComponent = (options: ComponentMount = {}) => {
+    return shallowMount(BaseDialog, {
+      localVue,
+      ...options
+    })
+  }
+
   const dialogProps = (): BaseDialogProps => ({
     dialog: true,
     maxWidth: 400
@@ -14,7 +19,7 @@ describe('@/components/Base/BaseDialog.vue', () => {
 
   it('Renders dialog header', async () => {
     const slotContent = 'Login'
-    const { element } = shallowMount(BaseDialog, {
+    const { element } = mountComponent({
       propsData: {
         ...dialogProps()
       },
@@ -28,7 +33,7 @@ describe('@/components/Base/BaseDialog.vue', () => {
 
   it('Renders dialog content', async () => {
     const slotContent = '<div>This is my dialog content</div>'
-    const { element } = shallowMount(BaseDialog, {
+    const { element } = mountComponent({
       propsData: {
         ...dialogProps()
       },
@@ -42,7 +47,7 @@ describe('@/components/Base/BaseDialog.vue', () => {
 
   it('Renders dialog action buttons', async () => {
     const slotContent = '<button>Continue</button>'
-    const { element } = shallowMount(BaseDialog, {
+    const { element } = mountComponent({
       propsData: {
         ...dialogProps()
       },
