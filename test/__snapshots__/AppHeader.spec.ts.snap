@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`@/components/App/AppHeader.vue should render component and match snapshot 1`] = `
+"<div>
+  <v-toolbar-stub color=\\"#50c494\\" tag=\\"header\\" extensionheight=\\"48\\" src=\\"\\" class=\\"elevation-0\\">
+    <router-link to=\\"/\\" class=\\"text-decoration-none white--text\\">
+      <base-avatar-stub avatarsize=\\"25\\" avatarclass=\\"\\" imagesrc=\\"headerIcon.PNG\\" imagealt=\\"Logo\\"></base-avatar-stub>
+      petson.
+    </router-link>
+    <v-spacer-stub tag=\\"div\\"></v-spacer-stub>
+    <base-button-stub btnid=\\"\\" btnclass=\\"white--text\\" datatestid=\\"\\" text=\\"true\\" width=\\"auto\\" color=\\"\\" backgroundcolor=\\"\\" texttransform=\\"\\"></base-button-stub>
+    <base-button-stub btnid=\\"\\" btnclass=\\"white--text\\" datatestid=\\"\\" text=\\"true\\" width=\\"auto\\" color=\\"\\" backgroundcolor=\\"\\" texttransform=\\"\\"></base-button-stub>
+    <v-spacer-stub tag=\\"div\\"></v-spacer-stub>
+    <base-button-stub btnid=\\"\\" btnclass=\\"white--text\\" datatestid=\\"\\" outlined=\\"true\\" width=\\"auto\\" color=\\"\\" backgroundcolor=\\"\\" texttransform=\\"\\"></base-button-stub>
+    <client-only>
+      <base-button-stub btnid=\\"\\" btnclass=\\"white--text mx-1\\" datatestid=\\"\\" outlined=\\"true\\" width=\\"auto\\" color=\\"\\" backgroundcolor=\\"\\" texttransform=\\"\\"></base-button-stub>
+    </client-only>
+  </v-toolbar-stub>
+  <login-dialog-stub></login-dialog-stub>
+  <logout-notification-stub></logout-notification-stub>
+  <registration-dialog-stub></registration-dialog-stub>
+  <user-setting-stub></user-setting-stub>
+</div>"
+`;
