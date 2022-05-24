@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`~/components/Auth/AuthDialog.vue should render component and match snapshot 1`] = `
+"<v-row-stub tag=\\"div\\" class=\\"mt-n6\\"><v-col-stub tag=\\"div\\"><v-row-stub tag=\\"div\\" class=\\"justify-center\\"><base-avatar-stub avatarsize=\\"50\\" avatarclass=\\"mx-2\\" imagesrc=\\"logo.PNG\\" imagealt=\\"Logo\\"></base-avatar-stub></v-row-stub> <v-row-stub tag=\\"div\\" class=\\"justify-center mt-6 mb-3\\">
+          someAction
+        </v-row-stub></v-col-stub></v-row-stub><v-form-stub> <v-checkbox-stub color=\\"#50C494FF\\" errorcount=\\"1\\" errormessages=\\"\\" messages=\\"\\" rules=\\"\\" successmessages=\\"\\" backgroundcolor=\\"\\" label=\\"someLabel\\" ripple=\\"true\\" valuecomparator=\\"[Function]\\" indeterminateicon=\\"$checkboxIndeterminate\\" officon=\\"$checkboxOff\\" onicon=\\"$checkboxOn\\" data-test-id=\\"someDataId\\" required=\\"\\" class=\\"mt-n2 mb-2\\"></v-checkbox-stub> <!----> <base-button-stub btnid=\\"\\" btnclass=\\"\\" datatestid=\\"someId\\" width=\\"100%\\" color=\\"white\\" backgroundcolor=\\"#50c494\\" texttransform=\\"\\" class=\\"white--text\\"></base-button-stub></v-form-stub>"
+`;
